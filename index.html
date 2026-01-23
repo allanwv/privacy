@@ -165,23 +165,30 @@
 
     <script>
         function setLanguage(lang) {
-            // Ocultar todos los idiomas
+            // 1. Ocultar todos los elementos con atributo lang
             document.querySelectorAll('[lang="es"]').forEach(el => el.style.display = 'none');
             document.querySelectorAll('[lang="en"]').forEach(el => el.style.display = 'none');
 
-            // Mostrar el seleccionado
+            // 2. Mostrar el idioma seleccionado
             document.querySelectorAll('[lang="' + lang + '"]').forEach(el => {
                 // Si es un div de bloque, usar block, si no, inline
                 el.style.display = (el.tagName === 'DIV') ? 'block' : 'inline';
             });
 
-            // Actualizar botones
-            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+            // 3. Actualizar estado de los botones (corregido)
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                // Si el texto del botón coincide con el idioma (ES o EN), lo activamos
+                if (btn.innerText.toLowerCase() === lang) {
+                    btn.classList.add('active');
+                }
+            });
         }
 
-        // Inicializar en Español
-        setLanguage('es');
+        // Inicializar en Español al cargar la página
+        window.onload = function() {
+            setLanguage('es');
+        };
     </script>
 </body>
 </html>
