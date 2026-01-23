@@ -43,12 +43,15 @@
             color: #b2bec3;
             transition: color 0.3s;
             font-size: 0.9rem;
+            outline: none;
         }
 
-        .lang-btn.active {
-            color: var(--accent-color);
-            text-decoration: underline;
-        }
+        /* Lógica de visibilidad por CSS (Mucho más segura) */
+        body.es [lang="en"] { display: none !important; }
+        body.en [lang="es"] { display: none !important; }
+
+        body.es .btn-es { color: var(--accent-color); text-decoration: underline; }
+        body.en .btn-en { color: var(--accent-color); text-decoration: underline; }
 
         .container {
             max-width: 800px;
@@ -82,9 +85,7 @@
             margin-top: 30px;
         }
 
-        p {
-            margin-bottom: 20px;
-        }
+        p { margin-bottom: 20px; }
 
         footer {
             margin-top: 50px;
@@ -95,27 +96,19 @@
             padding-top: 20px;
         }
 
-        /* Ocultar idiomas */
-        [lang="en"] { display: none; }
-
         @media (max-width: 600px) {
-            .container {
-                margin: 20px;
-                padding: 20px;
-            }
+            .container { margin: 20px; padding: 20px; }
             h1 { font-size: 1.8rem; }
         }
     </style>
 </head>
-<body>
-
-    <div class="lang-switch">
-        <button class="lang-btn active" onclick="setLanguage('es')">ES</button>
-        <button class="lang-btn" onclick="setLanguage('en')">EN</button>
+<body class="es"> <div class="lang-switch">
+        <button class="lang-btn btn-es" onclick="setLanguage('es')">ES</button>
+        <button class="lang-btn btn-en" onclick="setLanguage('en')">EN</button>
     </div>
 
     <div class="container">
-        <div id="content-es" lang="es">
+        <div lang="es">
             <h1>Política de Privacidad</h1>
             <p class="subtitle">iSaver Ultra</p>
 
@@ -123,8 +116,8 @@
             <p>iSaver Ultra es una herramienta diseñada para mejorar la experiencia del usuario al gestionar contenido de redes sociales. La privacidad de nuestros usuarios es nuestra prioridad absoluta.</p>
 
             <h2>2. Conexión Segura (OAuth 2.0 & Web Auth Flow)</h2>
-            <p>iSaver Ultra implementa el protocolo estándar de la industria <strong>OAuth 2.0</strong> para garantizar la seguridad del usuario. La autenticación se realiza exclusivamente a través de la <strong>interfaz oficial de inicio de sesión de Instagram</strong> mediante un visor web seguro (WebView).</p>
-            <p>Bajo este esquema técnico, el proceso de validación de credenciales ocurre de forma aislada en los servidores de Instagram/Meta. iSaver Ultra funciona únicamente como un puente de acceso autorizado, lo que garantiza que la aplicación <strong>nunca tenga acceso, almacene ni intercepte</strong> su contraseña o información sensible de la cuenta.</p>
+            <p>iSaver Ultra implementa el protocolo estándar de la industria <strong>OAuth 2.0</strong> para garantizar la seguridad del usuario. La autenticación se realiza exclusivamente a través de la interfaz oficial de inicio de sesión mediante un visor web seguro (WebView).</p>
+            <p>Bajo este esquema técnico, el proceso de validación de credenciales ocurre de forma aislada en los servidores oficiales. iSaver Ultra funciona únicamente como un puente de acceso autorizado, lo que garantiza que la aplicación <strong>nunca tenga acceso, almacene ni intercepte</strong> su contraseña o información sensible.</p>
 
             <h2>3. Recopilación de Datos</h2>
             <p>No recolectamos información personal identificable en nuestros servidores. La aplicación funciona localmente en tu dispositivo para procesar las descargas solicitadas.</p>
@@ -136,7 +129,7 @@
             <p>En cualquier momento puedes dejar de utilizar la aplicación y eliminar los datos almacenados localmente en tu dispositivo desde los ajustes de la misma.</p>
         </div>
 
-        <div id="content-en" lang="en">
+        <div lang="en">
             <h1>Privacy Policy</h1>
             <p class="subtitle">iSaver Ultra</p>
 
@@ -144,8 +137,8 @@
             <p>iSaver Ultra is a tool designed to enhance the user experience when managing social media content. Our users' privacy is our absolute priority.</p>
 
             <h2>2. Secure Connection (OAuth 2.0 & Web Auth Flow)</h2>
-            <p>iSaver Ultra implements the industry-standard <strong>OAuth 2.0</strong> protocol to ensure user security. Authentication is performed exclusively through the <strong>official Instagram login interface</strong> via a secure web viewer (WebView).</p>
-            <p>Under this technical framework, the credential validation process occurs in isolation on Instagram/Meta servers. iSaver Ultra acts solely as an authorized access bridge, ensuring that the application <strong>never accesses, stores, or intercepts</strong> your password or sensitive account information.</p>
+            <p>iSaver Ultra implements the industry-standard <strong>OAuth 2.0</strong> protocol to ensure user security. Authentication is performed exclusively through the official login interface via a secure web viewer (WebView).</p>
+            <p>Under this technical framework, the credential validation process occurs in isolation on official servers. iSaver Ultra acts solely as an authorized access bridge, ensuring that the application <strong>never accesses, stores, or intercepts</strong> your password or sensitive account information.</p>
 
             <h2>3. Data Collection</h2>
             <p>We do not collect personally identifiable information on our servers. The application runs locally on your device to process the requested downloads.</p>
@@ -159,36 +152,17 @@
 
         <footer>
             Created with ❤️ by <strong>Weisser's Labs</strong><br>
-            &copy; 2026 iSaver Ultra. <span id="footer-es" lang="es">Todos los derechos reservados.</span><span id="footer-en" lang="en">All rights reserved.</span>
+            &copy; 2026 iSaver Ultra. 
+            <span lang="es">Todos los derechos reservados.</span>
+            <span lang="en">All rights reserved.</span>
         </footer>
     </div>
 
     <script>
         function setLanguage(lang) {
-            // 1. Ocultar todos los elementos con atributo lang
-            document.querySelectorAll('[lang="es"]').forEach(el => el.style.display = 'none');
-            document.querySelectorAll('[lang="en"]').forEach(el => el.style.display = 'none');
-
-            // 2. Mostrar el idioma seleccionado
-            document.querySelectorAll('[lang="' + lang + '"]').forEach(el => {
-                // Si es un div de bloque, usar block, si no, inline
-                el.style.display = (el.tagName === 'DIV') ? 'block' : 'inline';
-            });
-
-            // 3. Actualizar estado de los botones (corregido)
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.remove('active');
-                // Si el texto del botón coincide con el idioma (ES o EN), lo activamos
-                if (btn.innerText.toLowerCase() === lang) {
-                    btn.classList.add('active');
-                }
-            });
+            // Solo cambiamos la clase del body, el CSS hace el resto
+            document.body.className = lang;
         }
-
-        // Inicializar en Español al cargar la página
-        window.onload = function() {
-            setLanguage('es');
-        };
     </script>
 </body>
 </html>
