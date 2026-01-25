@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - iSaver Ultra</title>
+    <title>Legal - iSaver Ultra</title>
     <style>
         :root {
             --primary-color: #2d3436;
@@ -46,7 +46,7 @@
             outline: none;
         }
 
-        /* Lógica de visibilidad por CSS (Mucho más segura) */
+        /* Lógica de visibilidad por CSS */
         body.es [lang="en"] { display: none !important; }
         body.en [lang="es"] { display: none !important; }
 
@@ -82,10 +82,12 @@
             color: var(--primary-color);
             border-left: 4px solid var(--accent-color);
             padding-left: 15px;
-            margin-top: 30px;
+            margin-top: 40px;
         }
 
         p { margin-bottom: 20px; }
+        
+        strong { color: var(--primary-color); }
 
         footer {
             margin-top: 50px;
@@ -102,52 +104,77 @@
         }
     </style>
 </head>
-<body class="es"> <div class="lang-switch">
+<body class="es"> 
+    <div class="lang-switch">
         <button class="lang-btn btn-es" onclick="setLanguage('es')">ES</button>
         <button class="lang-btn btn-en" onclick="setLanguage('en')">EN</button>
     </div>
 
     <div class="container">
         <div lang="es">
-            <h1>Política de Privacidad</h1>
+            <h1>Centro Legal</h1>
             <p class="subtitle">iSaver Ultra</p>
 
-            <h2>1. Información General</h2>
-            <p>iSaver Ultra es una herramienta diseñada para mejorar la experiencia del usuario al gestionar contenido de redes sociales. La privacidad de nuestros usuarios es nuestra prioridad absoluta.</p>
+            <section id="privacy">
+                <h2>Política de Privacidad</h2>
+                <p>iSaver Ultra es una herramienta diseñada para mejorar la experiencia del usuario al gestionar contenido de redes sociales. La privacidad de nuestros usuarios es nuestra prioridad absoluta.</p>
 
-            <h2>2. Conexión Segura (OAuth 2.0 & Web Auth Flow)</h2>
-            <p>iSaver Ultra implementa el protocolo estándar de la industria <strong>OAuth 2.0</strong> para garantizar la seguridad del usuario. La autenticación se realiza exclusivamente a través de la interfaz oficial de inicio de sesión mediante un visor web seguro (WebView).</p>
-            <p>Bajo este esquema técnico, el proceso de validación de credenciales ocurre de forma aislada en los servidores oficiales. iSaver Ultra funciona únicamente como un puente de acceso autorizado, lo que garantiza que la aplicación <strong>nunca tenga acceso, almacene ni intercepte</strong> su contraseña o información sensible.</p>
+                <h3>Conexión Segura (OAuth 2.0)</h3>
+                <p>Implementamos el estándar <strong>OAuth 2.0</strong>. La autenticación ocurre directamente en los servidores oficiales de Meta. iSaver Ultra <strong>nunca tiene acceso, almacena ni intercepta</strong> sus credenciales sensibles.</p>
 
-            <h2>3. Recopilación de Datos</h2>
-            <p>No recolectamos información personal identificable en nuestros servidores. La aplicación funciona localmente en tu dispositivo para procesar las descargas solicitadas.</p>
+                <h3>Recopilación de Datos</h3>
+                <p>No recolectamos información personal en nuestros servidores. La aplicación funciona localmente en su dispositivo.</p>
+            </section>
 
-            <h2>4. Servicios de Terceros</h2>
-            <p>Utilizamos <strong>Google AdMob</strong> para la entrega de anuncios. Google puede utilizar identificadores de dispositivos para personalizar la publicidad que ves. Puedes consultar la política de Google para más detalles.</p>
+            <section id="terms">
+                <h2>Términos y Condiciones</h2>
+                <p>Al utilizar iSaver Ultra, usted acepta los siguientes términos:</p>
+                
+                <h3>1. Uso Permitido</h3>
+                <p>Esta aplicación es exclusivamente para <strong>uso personal</strong>. El usuario es el único responsable del contenido que descarga y debe asegurarse de tener los derechos o permisos necesarios de los autores originales.</p>
 
-            <h2>5. Derechos del Usuario</h2>
-            <p>En cualquier momento puedes dejar de utilizar la aplicación y eliminar los datos almacenados localmente en tu dispositivo desde los ajustes de la misma.</p>
+                <h3>2. Propiedad Intelectual</h3>
+                <p>Respetamos los derechos de autor. No fomentamos la descarga de contenido protegido sin autorización. iSaver Ultra no es dueño del contenido descargado.</p>
+
+                <h3>3. Limitación de Responsabilidad</h3>
+                <p>iSaver Ultra no se hace responsable por el mal uso de la herramienta o por cualquier infracción de los términos de servicio de terceros (como Instagram) realizada por el usuario.</p>
+
+                <h3>4. No Afiliación</h3>
+                <p>Esta aplicación <strong>no está afiliada, asociada, autorizada ni respaldada</strong> por Meta Platforms, Inc. o Instagram.</p>
+            </section>
         </div>
 
         <div lang="en">
-            <h1>Privacy Policy</h1>
+            <h1>Legal Center</h1>
             <p class="subtitle">iSaver Ultra</p>
 
-            <h2>1. General Information</h2>
-            <p>iSaver Ultra is a tool designed to enhance the user experience when managing social media content. Our users' privacy is our absolute priority.</p>
+            <section id="privacy-en">
+                <h2>Privacy Policy</h2>
+                <p>iSaver Ultra is a tool designed to enhance the user experience when managing social media content. Our users' privacy is our absolute priority.</p>
 
-            <h2>2. Secure Connection (OAuth 2.0 & Web Auth Flow)</h2>
-            <p>iSaver Ultra implements the industry-standard <strong>OAuth 2.0</strong> protocol to ensure user security. Authentication is performed exclusively through the official login interface via a secure web viewer (WebView).</p>
-            <p>Under this technical framework, the credential validation process occurs in isolation on official servers. iSaver Ultra acts solely as an authorized access bridge, ensuring that the application <strong>never accesses, stores, or intercepts</strong> your password or sensitive account information.</p>
+                <h3>Secure Connection (OAuth 2.0)</h3>
+                <p>We implement the industry-standard <strong>OAuth 2.0</strong> protocol. Authentication occurs directly on official Meta servers. iSaver Ultra <strong>never accesses, stores, or intercepts</strong> your sensitive credentials.</p>
 
-            <h2>3. Data Collection</h2>
-            <p>We do not collect personally identifiable information on our servers. The application runs locally on your device to process the requested downloads.</p>
+                <h3>Data Collection</h3>
+                <p>We do not collect personally identifiable information on our servers. The application runs locally on your device.</p>
+            </section>
 
-            <h2>4. Third-Party Services</h2>
-            <p>We use <strong>Google AdMob</strong> for ad delivery. Google may use device identifiers to personalize the advertising you see. You can check Google's policy for more details.</p>
+            <section id="terms">
+                <h2>Terms and Conditions</h2>
+                <p>By using iSaver Ultra, you agree to the following terms:</p>
 
-            <h2>5. User Rights</h2>
-            <p>At any time, you can stop using the application and delete the data stored locally on your device from its settings.</p>
+                <h3>1. Permitted Use</h3>
+                <p>This application is for <strong>personal use</strong> only. The user is solely responsible for the content downloaded and must ensure they have the necessary rights or permissions from the original authors.</p>
+
+                <h3>2. Intellectual Property</h3>
+                <p>We respect copyrights. We do not encourage downloading protected content without authorization. iSaver Ultra does not own the downloaded content.</p>
+
+                <h3>3. Limitation of Liability</h3>
+                <p>iSaver Ultra is not responsible for the misuse of the tool or for any violation of third-party terms of service (such as Instagram) committed by the user.</p>
+
+                <h3>4. No Affiliation</h3>
+                <p>This application is <strong>not affiliated with, associated, authorized, or endorsed</strong> by Meta Platforms, Inc. or Instagram.</p>
+            </section>
         </div>
 
         <footer>
@@ -160,8 +187,15 @@
 
     <script>
         function setLanguage(lang) {
-            // Solo cambiamos la clase del body, el CSS hace el resto
             document.body.className = lang;
+        }
+        
+        // Auto-scroll al ancla si el link viene con #terms
+        window.onload = function() {
+            if(window.location.hash === '#terms') {
+                const termsSection = document.getElementById('terms');
+                if(termsSection) termsSection.scrollIntoView();
+            }
         }
     </script>
 </body>
